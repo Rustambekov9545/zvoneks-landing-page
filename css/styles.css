@@ -4056,6 +4056,56 @@ svg {
   opacity: 0.76;
 }
 
+/* Product previews are illustrations, but their copy must remain readable. */
+.app-window :is(
+  a,
+  button,
+  label,
+  input,
+  textarea,
+  select,
+  p,
+  small,
+  span,
+  em,
+  dt,
+  dd,
+  time
+) {
+  font-size: 8px !important;
+}
+
+.app-window :is(strong, h3, h4) {
+  font-size: 9px !important;
+}
+
+.app-window .metric-grid strong {
+  font-size: 13px !important;
+}
+
+.app-window .kpi-overview strong {
+  font-size: 11px !important;
+}
+
+.app-window .score-ring strong {
+  font-size: 20px !important;
+}
+
+.app-window .score-ring span {
+  font-size: 6.5px !important;
+}
+
+.app-window .app-brand span,
+.app-window .phone-card strong,
+.app-window .stage-conversion strong {
+  font-size: 9px !important;
+}
+
+.app-window .manager-row > b,
+.app-window .manager-kpi-row > em {
+  font-size: 8.5px !important;
+}
+
 @media (min-width: 901px) {
   .workspace-card {
     height: 440px;
