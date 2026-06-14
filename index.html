@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Звонекс — всё для холодных звонков</title>
+  <meta name="description" content="Звонки, скрипты, отчёты, задачи и AI-анализ в одном рабочем окне.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Onest:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#" aria-label="Звонекс">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8.2 5.3c.4-.4 1-.5 1.5-.2l2.1 1.3c.5.3.7.9.5 1.4l-.7 1.7c-.2.4-.1.8.2 1.1l1.6 1.6c.3.3.7.4 1.1.2l1.7-.7c.5-.2 1.1 0 1.4.5l1.3 2.1c.3.5.2 1.1-.2 1.5l-1.1 1.1c-.8.8-2 1.1-3.1.7-2.1-.7-4.1-2-5.8-3.7-1.7-1.7-3-3.7-3.7-5.8-.4-1.1-.1-2.3.7-3.1l.5-.7z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="logo-text">Звон<span>екс</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#features">Возможности</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#cases">Кейсы</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="phone" href="tel:+78001234567">8 800 123-45-67</a>
+        <a class="login" href="#">Войти</a>
+        <a class="trial-button" href="#features">Попробуйте 7 дней бесплатно</a>
+      </div>
+
+      <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="hero" id="features">
+    <div class="container">
+      <div class="hero-copy">
+        <h1>Всё, что нужно для холодных звонков —<br>в одном рабочем окне</h1>
+        <p>Наведите на пункт — ниже откроется подробный сценарий, что делает сервис<br>и как это помогает руководителю и менеджерам.</p>
+      </div>
+
+      <div class="feature-tabs" role="tablist" aria-label="Возможности сервиса">
+        <button class="feature-tab is-active" type="button" role="tab" aria-selected="true" data-feature="calls">
+          <span class="feature-icon feature-icon--violet" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 16.8v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3.2 6.2 2 2 0 0 1 5.2 4h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L9.2 12a16 16 0 0 0 3 3 16 16 0 0 0 3 2l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span><strong>Звонки из браузера</strong><small>Менеджер звонит прямо из карточки клиента</small></span>
+        </button>
+
+        <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="scripts">
+          <span class="feature-icon feature-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 9h9M7.5 13h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span><strong>Скрипты и возражения</strong><small>Подсказки появляются во время разговора</small></span>
+        </button>
+
+        <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="reports">
+          <span class="feature-icon feature-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 19V12M12 19V5M18 19V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span><strong>Отчёты и KPI</strong><small>Видно активность, качество и результат</small></span>
+        </button>
+
+        <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="tasks">
+          <span class="feature-icon feature-icon--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="m8 12 2.5 2.5L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span><strong>Задачи и пропущенные</strong><small>Ни один пропущенный не исчезает</small></span>
+        </button>
+
+        <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="ai">
+          <span class="feature-icon feature-icon--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>
+          </span>
+          <span><strong>AI-анализ звонков</strong><small>Сервис оценивает разговоры и ошибки</small></span>
+        </button>
+      </div>
+
+      <section class="workspace-card" aria-live="polite">
+        <div class="scenario">
+          <span class="scenario-tag" data-scenario-tag>Телефония</span>
+          <h2 data-scenario-title>Звоните клиенту в один клик прямо из карточки</h2>
+          <p data-scenario-text>Менеджеру не нужно открывать отдельный софт или искать номер клиента. Звонок, запись разговора и вся история общения автоматически сохраняются в истории каждой карточки.</p>
+          <ul data-scenario-list>
+            <li>Исходящие и входящие звонки прямо в браузере</li>
+            <li>Запись разговора доступна сразу после звонка и сохраняется в истории</li>
+            <li>Входящий попадает к последнему менеджеру, который общался с клиентом</li>
+            <li>Автоматическое создание задачи при пропущенных</li>
+          </ul>
+        </div>
+
+        <div class="product-preview" aria-label="Интерфейсы возможностей сервиса">
+          <div class="app-view is-active" data-preview="calls">
+            <div class="app-window">
+            <div class="app-topbar">
+              <div class="app-brand"><span>З</span> Звонекс</div>
+              <nav>
+                <a href="#">Проекты</a>
+                <a class="is-current" href="#">Продажи</a>
+                <a href="#">Контакты</a>
+                <a href="#">Отчёты</a>
+              </nav>
+              <span class="call-live"><i></i> Звонок идёт</span>
+            </div>
+
+            <div class="app-grid">
+              <aside class="client-column">
+                <div class="client-name">
+                  <strong>Алексей Воронов</strong>
+                  <span>ООО «ТехноПроф»</span>
+                </div>
+                <button class="call-button is-calling" type="button" data-call-toggle>
+                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.8v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3.2 6.2 2 2 0 0 1 5.2 4h3a2 2 0 0 1 2 1.7c.12.95.35 1.88.69 2.77a2 2 0 0 1-.45 2.11L8.1 12.02a16 16 0 0 0 3 3 16 16 0 0 0 3 2l1.14-1.14a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.69A2 2 0 0 1 21 16.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Идёт звонок</span>
+                </button>
+                <div class="phone-card" data-call-panel>
+                  <span>Исходящий</span>
+                  <strong data-call-time>00:48</strong>
+                  <b>+7 (495) 812-44-90</b>
+                  <button type="button" aria-label="Завершить звонок" data-call-end>
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+                <dl class="client-details">
+                  <div><dt>Компания</dt><dd>ООО «ТехноПроф»</dd></div>
+                  <div><dt>Должность</dt><dd>Руководитель отдела закупок</dd></div>
+                  <div><dt>Телефон</dt><dd>+7 (495) 812-44-90</dd></div>
+                  <div><dt>Email</dt><dd>a.voronov@technoprof.ru</dd></div>
+                  <div><dt>Ответственный</dt><dd>Алексей Воронов</dd></div>
+                </dl>
+              </aside>
+
+              <section class="history-column">
+                <div class="history-tabs">
+                  <button class="is-active" type="button" data-call-tab="history">История</button>
+                  <button type="button" data-call-tab="script">Возражения и скрипты</button>
+                </div>
+
+                <div class="call-tab-content is-active" data-call-content="history">
+                  <div class="event event--live">
+                    <span class="event-icon">↗</span>
+                    <div><small>Исходящий</small><strong>Звонок идёт</strong><p>Запись сохраняется в карточку автоматически.</p></div>
+                    <time data-call-time>00:48</time>
+                  </div>
+                  <div class="event">
+                    <span class="event-icon">↙</span>
+                    <div><small>Исходящий</small><strong>Завершён</strong><p>8 июня 2026 · 14:32</p></div>
+                    <time>00:04</time>
+                  </div>
+                  <div class="event">
+                    <span class="event-icon event-icon--check">✓</span>
+                    <div><strong>Этап изменён</strong><p>Лид → Заказ</p></div>
+                    <time>18:24</time>
+                  </div>
+                  <div class="event">
+                    <span class="event-icon">□</span>
+                    <div><strong>Комментарий от оператора</strong><p>созвон, КП отправлено</p></div>
+                    <time>17:35</time>
+                  </div>
+                </div>
+
+                <div class="call-tab-content" data-call-content="script">
+                  <article class="live-script-card">
+                    <small>Текущий шаг</small>
+                    <strong>Презентация решения</strong>
+                    <p>«Покажу, как команда сможет звонить быстрее и контролировать результат в одном окне».</p>
+                  </article>
+                  <button class="live-objection" type="button"><span>У нас уже есть CRM</span><b>Открыть ответ</b></button>
+                  <button class="live-objection" type="button"><span>Слишком дорого</span><b>Открыть ответ</b></button>
+                </div>
+
+                <div class="current-stage"><span>Текущий этап</span><strong>Заказ</strong></div>
+                <textarea class="comment-box" data-call-comment rows="2" placeholder="Введите результат звонка или комментарий..."></textarea>
+                <div class="history-actions">
+                  <button type="button" data-create-call-task>Поставить задачу</button>
+                  <button type="button" data-save-call>Сохранить</button>
+                  <button class="next-button" type="button" data-next-stage>Следующий →</button>
+                </div>
+              </section>
+
+              <aside class="stages-column">
+                <h3>Этапы разговора</h3>
+                <ol>
+                  <li class="is-done" tabindex="0" data-stage="1"><span>1</span>Начало и контакт</li>
+                  <li class="is-done" tabindex="0" data-stage="2"><span>2</span>Выявление потребности</li>
+                  <li class="is-active" tabindex="0" data-stage="3"><span>3</span>Презентация решения</li>
+                  <li tabindex="0" data-stage="4"><span>4</span>Работа с возражениями</li>
+                  <li tabindex="0" data-stage="5"><span>5</span>Завершение звонка</li>
+                </ol>
+              </aside>
+            </div>
+          </div>
+          </div>
+
+          <div class="app-view" data-preview="scripts">
+            <div class="app-window">
+              <div class="app-topbar">
+                <div class="app-brand"><span>З</span> Звонекс</div>
+                <nav>
+                  <a href="#">Проекты</a>
+                  <a href="#">Продажи</a>
+                  <a class="is-current" href="#">Контакты</a>
+                  <a href="#">Отчёты</a>
+                </nav>
+              </div>
+
+              <div class="scripts-reference">
+                <div class="scripts-surface">
+                  <aside class="scripts-contact">
+                    <div class="client-name">
+                      <strong>Елена Григорьева</strong>
+                      <span>ИП «Краснополье»</span>
+                    </div>
+                    <button class="call-button" type="button" data-call-toggle>
+                      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.8v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3.2 6.2 2 2 0 0 1 5.2 4h3a2 2 0 0 1 2 1.7c.12.95.35 1.88.69 2.77a2 2 0 0 1-.45 2.11L8.1 12.02a16 16 0 0 0 3 3 16 16 0 0 0 3 2l1.14-1.14a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.69A2 2 0 0 1 21 16.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span>Позвонить</span>
+                    </button>
+                    <dl class="client-details">
+                      <div><dt>Компания</dt><dd>ИП «Григорьева»</dd></div>
+                      <div><dt>Регион</dt><dd>Краснодарский край</dd></div>
+                      <div><dt>Телефон</dt><dd>+7 (391) 245-18-03</dd></div>
+                      <div><dt>Email</dt><dd>e.grigoryeva@mail.ru</dd></div>
+                      <div><dt>Ответственный</dt><dd>Денис Смирнов</dd></div>
+                    </dl>
+                  </aside>
+
+                  <section class="scripts-table">
+                    <div class="scripts-table-tabs">
+                      <button type="button" data-script-tab="history">История</button>
+                      <button class="is-active" type="button" data-script-tab="objections">Возражения и скрипты</button>
+                    </div>
+                    <div class="scripts-table-head">
+                      <div>
+                        <small>Карточка клиента</small>
+                        <h3>Возражения клиента</h3>
+                      </div>
+                      <button class="add-script-button" type="button" data-modal-open>
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Добавить
+                      </button>
+                    </div>
+                    <div class="script-table-content is-active" data-script-content="objections">
+                      <div class="objection-tags">
+                        <button class="is-active" type="button" data-objection="price">У вас дорого</button>
+                        <button type="button" data-objection="info">Получил инфо</button>
+                        <button type="button" data-objection="think">Нужно подумать</button>
+                        <button type="button" data-objection="vendor">Работаем с другим</button>
+                      </div>
+                      <article class="objection-row objection-row--active">
+                        <div class="objection-row__head"><strong data-objection-title>У вас дорого</strong><button type="button" data-copy-answer>Скопировать</button></div>
+                        <small>Что ответить</small>
+                        <p data-objection-answer>Понимаю. Подскажите, что для вас важнее — цена сейчас или итоговая выгода от результата?</p>
+                      </article>
+                      <article class="objection-row">
+                        <small>Начальный вопрос</small>
+                        <p data-objection-question>С чем из конкурентов сравниваете? Что для вас важнее — цена или сроки?</p>
+                      </article>
+                      <article class="objection-row">
+                        <small>Если клиент согласен</small>
+                        <p data-objection-next>Предложите демо и зафиксируйте следующий звонок — «Могу перенести в четверг в 11:00?»</p>
+                      </article>
+                    </div>
+                    <div class="script-table-content" data-script-content="history">
+                      <article class="script-history-row"><span class="event-icon event-icon--check">✓</span><div><strong>Скрипт открыт менеджером</strong><p>Сегодня, 11:42 · Денис Смирнов</p></div></article>
+                      <article class="script-history-row"><span class="event-icon">+</span><div><strong>Добавлено возражение «У вас дорого»</strong><p>Вчера, 17:20 · Анна Смирнова</p></div></article>
+                      <article class="script-history-row"><span class="event-icon">↗</span><div><strong>Ответ скопирован в комментарий</strong><p>Вчера, 16:08 · Денис Смирнов</p></div></article>
+                    </div>
+                  </section>
+
+                  <aside class="scripts-empty-panel" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </aside>
+                </div>
+
+                <form class="script-glass-modal is-open" aria-hidden="false" data-script-modal>
+                  <button class="script-modal-close" type="button" aria-label="Закрыть" data-modal-close>
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </button>
+                  <h3>Добавить скрипт</h3>
+                  <label>
+                    <span>Возражение / тема</span>
+                    <input type="text" value="У вас цены выше, чем у конкурентов.">
+                  </label>
+                  <label>
+                    <span>Ответ (текст скрипта)</span>
+                    <textarea>Давайте сравним не только цену, а итоговую выгоду: сроки, сервис и результат для вашего бизнеса.</textarea>
+                  </label>
+                  <div class="script-access">
+                    <label><input type="radio" name="access" checked> <span><strong>Всем пользователям</strong><small>Будет доступен внутри отдела</small></span></label>
+                    <label><input type="radio" name="access"> <span><strong>Конкретному пользователю</strong><small>Выберите менеджера</small></span></label>
+                  </div>
+                  <div class="script-modal-actions">
+                    <button type="button" data-modal-close>Отмена</button>
+                    <button type="submit">
+                      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Создать скрипт
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" data-preview="reports">
+            <div class="app-window">
+              <div class="app-topbar">
+                <div class="app-brand"><span>З</span> Звонекс</div>
+                <nav>
+                  <a href="#">Проекты</a>
+                  <a href="#">Продажи</a>
+                  <a href="#">Контакты</a>
+                  <a class="is-current" href="#">Отчёты</a>
+                </nav>
+                <button class="date-filter" type="button" data-date-cycle>
+                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <span>03–09 июня</span>
+                  <svg class="ui-icon ui-icon--chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+
+              <div class="report-dashboard">
+                <div class="report-heading">
+                  <div><small>Настройки / KPI</small><h3>Контроль KPI отдела продаж</h3></div>
+                  <button type="button" data-export-report>
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 20h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Экспорт отчёта
+                  </button>
+                </div>
+                <div class="kpi-overview">
+                  <article><span>Звонки</span><strong data-metric="calls">1 284</strong><em>План 1 400</em></article>
+                  <article><span>Выполнение KPI</span><strong data-metric="reach">86%</strong><em class="is-positive">↑ 8%</em></article>
+                  <article><span>Целевые действия</span><strong data-metric="actions">146</strong><em>План 160</em></article>
+                </div>
+                <div class="kpi-workspace">
+                  <form class="kpi-create-card" data-kpi-form>
+                    <div class="kpi-card-head">
+                      <div><small>Настройки → KPI</small><h3>Создать KPI</h3></div>
+                      <span>+</span>
+                    </div>
+                    <label>Название KPI<input type="text" value="Звонки менеджеров" required></label>
+                    <div class="kpi-form-row">
+                      <label>Показатель<select data-kpi-metric><option value="calls">Количество звонков</option><option value="duration">Время разговора</option><option value="actions">Целевые действия</option></select></label>
+                      <label>Период<select><option>Неделя</option><option>Месяц</option></select></label>
+                    </div>
+                    <label>План на менеджера<div class="kpi-plan-input"><input type="number" value="250" min="1" required><span>звонков</span></div></label>
+                    <label class="kpi-toggle"><input type="checkbox" checked><i></i><span><strong>Учитывать только дозвоны</strong><small>Исключить звонки без ответа</small></span></label>
+                    <button type="submit">Создать KPI</button>
+                  </form>
+
+                  <section class="kpi-managers-panel">
+                    <div class="panel-heading"><div><small>Выполнение KPI</small><h3>По менеджерам</h3></div><span class="kpi-period">Неделя</span></div>
+                    <div class="manager-kpi-row is-selected" role="button" tabindex="0" data-manager-kpi="Анна Смирнова" data-manager-score="92">
+                      <span class="manager-avatar">АС</span><div><strong>Анна Смирнова</strong><small>286 звонков · план 250</small><i><b style="width:92%"></b></i></div><em>92%</em>
+                    </div>
+                    <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Денис Ковалёв" data-manager-score="86">
+                      <span class="manager-avatar">ДК</span><div><strong>Денис Ковалёв</strong><small>254 звонка · план 250</small><i><b style="width:86%"></b></i></div><em>86%</em>
+                    </div>
+                    <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Мария Иванова" data-manager-score="79">
+                      <span class="manager-avatar">МИ</span><div><strong>Мария Иванова</strong><small>239 звонков · план 250</small><i><b style="width:79%"></b></i></div><em>79%</em>
+                    </div>
+                    <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Алексей Петров" data-manager-score="74">
+                      <span class="manager-avatar">АП</span><div><strong>Алексей Петров</strong><small>218 звонков · план 250</small><i><b style="width:74%"></b></i></div><em>74%</em>
+                    </div>
+                  </section>
+
+                  <section class="report-drilldown">
+                    <div class="report-tabs">
+                      <button class="is-active" type="button" data-report-tab="calls">Звонки</button>
+                      <button type="button" data-report-tab="stages">Этапы сделки</button>
+                    </div>
+                    <div class="report-tab-panel is-active" data-report-panel="calls">
+                      <div class="report-focus"><small data-report-manager>Анна Смирнова</small><strong><span data-report-score>92</span>% KPI</strong></div>
+                      <article class="call-record">
+                        <button type="button" data-record-play aria-label="Прослушать звонок"><span>▶</span></button>
+                        <div><strong>ООО «Альфа»</strong><small>Дозвон · 03:42</small></div><em>Сегодня</em>
+                      </article>
+                      <article class="call-record">
+                        <button type="button" data-record-play aria-label="Прослушать звонок"><span>▶</span></button>
+                        <div><strong>ИП Крылов</strong><small>Договорились · 05:18</small></div><em>11:24</em>
+                      </article>
+                      <article class="call-record">
+                        <button type="button" data-record-play aria-label="Прослушать звонок"><span>▶</span></button>
+                        <div><strong>ООО «Вектор»</strong><small>Перезвонить · 02:06</small></div><em>10:48</em>
+                      </article>
+                    </div>
+                    <div class="report-tab-panel" data-report-panel="stages">
+                      <div class="deal-stage"><span>Новый лид</span><i><b style="width:100%"></b></i><strong>184</strong></div>
+                      <div class="deal-stage"><span>Контакт</span><i><b style="width:78%"></b></i><strong>143</strong></div>
+                      <div class="deal-stage"><span>Презентация</span><i><b style="width:52%"></b></i><strong>96</strong></div>
+                      <div class="deal-stage"><span>Предложение</span><i><b style="width:34%"></b></i><strong>63</strong></div>
+                      <div class="deal-stage"><span>Сделка</span><i><b style="width:18%"></b></i><strong>34</strong></div>
+                      <div class="stage-conversion"><span>Конверсия в сделку</span><strong>18,5%</strong></div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" data-preview="tasks">
+            <div class="app-window">
+              <div class="app-topbar">
+                <div class="app-brand"><span>З</span> Звонекс</div>
+                <nav>
+                  <a href="#">Проекты</a>
+                  <a class="is-current" href="#">Продажи</a>
+                  <a href="#">Контакты</a>
+                  <a href="#">Отчёты</a>
+                </nav>
+                <button class="new-task-button" type="button" data-add-task>
+                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Новая задача
+                </button>
+              </div>
+
+              <div class="tasks-layout">
+                <aside class="task-filters">
+                  <h3>Задачи</h3>
+                  <div class="missed-call-automation">
+                    <span class="automation-phone">
+                      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.8v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3.2 6.2 2 2 0 0 1 5.2 4h3a2 2 0 0 1 2 1.7c.12.95.35 1.88.69 2.77a2 2 0 0 1-.45 2.11L8.1 12.02a16 16 0 0 0 6 5l1.14-1.14a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.69A2 2 0 0 1 21 16.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </span>
+                    <div><strong>Пропущенный звонок</strong><small>09:42 · общий номер</small></div>
+                    <i>→</i>
+                    <span class="automation-check">✓</span>
+                    <div><strong>Задача создана</strong><small>Перезвонить клиенту</small></div>
+                  </div>
+                  <button class="is-active" type="button" data-task-filter="today"><span>Сегодня</span><b>12</b></button>
+                  <button type="button" data-task-filter="overdue"><span>Просроченные</span><b class="is-danger">4</b></button>
+                  <button type="button" data-task-filter="upcoming"><span>Предстоящие</span><b>18</b></button>
+                  <button type="button" data-task-filter="done"><span>Выполненные</span><b>36</b></button>
+                  <h4>Тип задачи</h4>
+                  <label data-task-type="call" role="button" tabindex="0"><i class="task-dot task-dot--violet"></i>Перезвонить</label>
+                  <label data-task-type="proposal" role="button" tabindex="0"><i class="task-dot task-dot--green"></i>Отправить КП</label>
+                  <label data-task-type="meeting" role="button" tabindex="0"><i class="task-dot task-dot--blue"></i>Провести встречу</label>
+                </aside>
+
+                <section class="task-list">
+                  <div class="panel-heading">
+                    <div><small>Сегодня, 14 июня</small><h3>Мои задачи</h3></div>
+                    <span class="progress-pill">8 из 12 выполнено</span>
+                  </div>
+                  <article class="task-item is-selected" data-task data-title="Перезвонить клиенту" data-person="Алексей Воронов" data-company="ООО «ТехноПроф»" data-time="Сегодня, 10:30" data-note="Клиент звонил на общий номер. Последний ответственный менеджер — Анна Смирнова.">
+                    <button type="button" data-task-check aria-label="Выполнить задачу"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div><strong>Перезвонить Алексею Воронову</strong><p>ООО «ТехноПроф» · пропущенный звонок</p></div><time>10:30</time>
+                  </article>
+                  <article class="task-item" data-task data-title="Отправить коммерческое предложение" data-person="Ирина Соколова" data-company="ООО «Вектор»" data-time="Сегодня, 12:00" data-note="Клиент ожидает предложение с расчётом стоимости и сроками подключения.">
+                    <button type="button" data-task-check aria-label="Выполнить задачу"></button><div><strong>Отправить коммерческое предложение</strong><p>Ирина Соколова · ООО «Вектор»</p></div><time>12:00</time>
+                  </article>
+                  <article class="task-item" data-task data-title="Повторный контакт" data-person="Михаил Орлов" data-company="Компания «Старт»" data-time="Сегодня, 14:15" data-note="После презентации клиент попросил время на обсуждение с руководителем.">
+                    <button type="button" data-task-check aria-label="Выполнить задачу"></button><div><strong>Повторный контакт после презентации</strong><p>Михаил Орлов · Компания «Старт»</p></div><time>14:15</time>
+                  </article>
+                  <article class="task-item" data-task data-title="Уточнить решение по договору" data-person="Елена Романова" data-company="ООО «Глобус»" data-time="Сегодня, 16:40" data-note="Договор отправлен два дня назад. Нужно уточнить замечания и срок подписания.">
+                    <button type="button" data-task-check aria-label="Выполнить задачу"></button><div><strong>Уточнить решение по договору</strong><p>Елена Романова · ООО «Глобус»</p></div><time>16:40</time>
+                  </article>
+                </section>
+
+                <aside class="task-detail">
+                  <span class="scenario-tag" data-task-tag>Автозадача после пропущенного</span>
+                  <h3 data-task-detail-title>Перезвонить клиенту</h3>
+                  <div class="task-person"><span class="manager-avatar" data-task-avatar>АВ</span><div><strong data-task-person>Алексей Воронов</strong><small data-task-company>ООО «ТехноПроф»</small></div></div>
+                  <dl>
+                    <div><dt>Ответственный</dt><dd>Анна Смирнова</dd></div>
+                    <div><dt>Срок</dt><dd data-task-time>Сегодня, 10:30</dd></div>
+                    <div><dt>Создано</dt><dd data-task-source>Автоматически в 09:42</dd></div>
+                  </dl>
+                  <p class="task-note" data-task-note>Клиент звонил на общий номер. Последний ответственный менеджер — Анна Смирнова.</p>
+                  <button class="call-task-button" type="button" data-task-call>
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.8v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3.2 6.2 2 2 0 0 1 5.2 4h3a2 2 0 0 1 2 1.7c.12.95.35 1.88.69 2.77a2 2 0 0 1-.45 2.11L8.1 12.02a16 16 0 0 0 3 3 16 16 0 0 0 3 2l1.14-1.14a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.69A2 2 0 0 1 21 16.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span data-task-call-label>Позвонить клиенту</span>
+                  </button>
+                  <button class="complete-task-button" type="button" data-task-complete>
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Отметить выполненной</span>
+                  </button>
+                </aside>
+              </div>
+
+              <form class="task-create-modal" data-task-modal aria-hidden="true">
+                <div class="task-modal-head">
+                  <div><small>Задачи / Новая</small><h3>Создать задачу</h3></div>
+                  <button type="button" data-task-modal-close aria-label="Закрыть">×</button>
+                </div>
+                <label>Что нужно сделать<input type="text" name="title" value="Связаться с клиентом" required></label>
+                <div class="task-modal-row">
+                  <label>Клиент<input type="text" name="person" value="Алексей Воронов" required></label>
+                  <label>Срок<input type="time" name="time" value="17:30" required></label>
+                </div>
+                <label>Комментарий<textarea name="note" rows="2">Уточнить решение и договориться о следующем шаге.</textarea></label>
+                <div class="task-modal-footer">
+                  <button type="button" data-task-modal-close>Отмена</button>
+                  <button type="submit">Создать задачу</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="app-view" data-preview="ai">
+            <div class="app-window">
+              <div class="app-topbar">
+                <div class="app-brand"><span>З</span> Звонекс</div>
+                <nav>
+                  <a href="#">Проекты</a>
+                  <a href="#">Продажи</a>
+                  <a href="#">Контакты</a>
+                  <a class="is-current" href="#">AI-анализ</a>
+                </nav>
+                <span class="analysis-ready"><i></i> Анализ завершён</span>
+              </div>
+
+              <div class="ai-layout">
+                <aside class="ai-score-panel">
+                  <small>Звонок #12845</small>
+                  <h3>Алексей Воронов</h3>
+                  <p>14 июня · 03:48</p>
+                  <div class="score-ring"><strong>84</strong><span>из 100</span></div>
+                  <h4>Оценка разговора</h4>
+                  <div class="score-line"><span>Скрипт</span><i><b style="width:88%"></b></i><strong>88%</strong></div>
+                  <div class="score-line"><span>Контакт</span><i><b style="width:92%"></b></i><strong>92%</strong></div>
+                  <div class="score-line"><span>Выявление</span><i><b style="width:76%"></b></i><strong>76%</strong></div>
+                  <div class="score-line"><span>Завершение</span><i><b style="width:81%"></b></i><strong>81%</strong></div>
+                </aside>
+
+                <section class="transcript-panel">
+                  <div class="panel-heading">
+                    <div><small>Расшифровка</small><h3>Диалог с клиентом</h3></div>
+                    <div class="voice-controls">
+                      <span class="voice-badge">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 10v4h3l4 3V7L8 10H5zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span data-voice-status>Голос</span>
+                      </span>
+                      <button class="play-button" type="button" data-audio-toggle aria-label="Озвучить диалог" title="Озвучить диалог">
+                        <svg class="ui-icon play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 7 8 5-8 5V7z" fill="currentColor"/></svg>
+                        <svg class="ui-icon pause-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 7v10M15 7v10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span data-audio-time>00:00</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="audio-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="phrase phrase--manager"><span>00:18</span><div><strong>Менеджер</strong><p>Подскажите, как сейчас организован обзвон клиентской базы?</p></div></div>
+                  <div class="phrase phrase--client"><span>00:34</span><div><strong>Клиент</strong><p>Менеджеры звонят вручную, но сложно контролировать результат.</p></div></div>
+                  <div class="phrase phrase--manager is-highlighted"><span>01:12</span><div><strong>Менеджер</strong><p>Звонекс автоматизирует звонки и показывает KPI в реальном времени.</p><em>Хорошая презентация ценности</em></div></div>
+                  <div class="phrase phrase--client"><span>02:08</span><div><strong>Клиент</strong><p>Нам нужно сравнить это с текущим решением.</p></div></div>
+                </section>
+
+                <aside class="ai-insights">
+                  <div class="panel-heading"><div><small>Результат анализа</small><h3>Выводы AI</h3></div></div>
+                  <div class="insight-card insight-card--good"><strong>Что получилось</strong><p>Менеджер выявил проблему и связал её с возможностями сервиса.</p></div>
+                  <div class="insight-card insight-card--warn"><strong>Что улучшить</strong><p>Не уточнил сроки принятия решения и участников согласования.</p></div>
+                  <div class="insight-card"><strong>Возражение</strong><p>«Нужно сравнить с текущим решением»</p><span>Ответ найден в скрипте</span></div>
+                  <div class="ai-result"><span>Итог звонка</span><strong>Назначить демонстрацию</strong></div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="demo-toast" role="status" aria-live="polite" data-toast>
+    <span class="demo-toast__icon">
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span data-toast-text>Готово</span>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
