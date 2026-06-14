@@ -3953,6 +3953,107 @@ svg {
   box-shadow: 0 5px 13px rgba(44, 67, 101, 0.045);
 }
 
+/* Keep small product-illustration copy readable on pale glass surfaces. */
+.app-window {
+  --illustration-text: #29364b;
+  --illustration-muted: #637087;
+  --illustration-soft: #748197;
+}
+
+.app-window .app-topbar,
+.app-window .app-topbar nav a,
+.app-window .history-tabs button,
+.app-window .scripts-table-tabs button,
+.app-window .task-filters > button {
+  color: var(--illustration-muted);
+}
+
+.app-window .app-topbar nav .is-current,
+.app-window .history-tabs .is-active,
+.app-window .scripts-table-tabs .is-active,
+.app-window .task-filters > button.is-active {
+  color: #5264d7;
+}
+
+.app-window .client-name span,
+.app-window .client-details dt,
+.app-window .event p,
+.app-window .event time,
+.app-window .current-stage,
+.app-window .panel-heading small,
+.app-window .report-heading small,
+.app-window .scripts-table-head small,
+.app-window .script-history-row p,
+.app-window .objection-row p,
+.app-window .script-access small,
+.app-window .kpi-overview span,
+.app-window .kpi-overview em,
+.app-window .kpi-card-head small,
+.app-window .kpi-create-card > label,
+.app-window .kpi-form-row label,
+.app-window .kpi-plan-input span,
+.app-window .kpi-toggle small,
+.app-window .manager-kpi-row small,
+.app-window .call-record small,
+.app-window .call-record em,
+.app-window .deal-stage > span,
+.app-window .task-filters label,
+.app-window .task-item p,
+.app-window .task-item time,
+.app-window .task-detail dt,
+.app-window .task-note,
+.app-window .ai-score-panel > p,
+.app-window .score-line > span,
+.app-window .phrase > span,
+.app-window .phrase p,
+.app-window .insight-card p,
+.app-window .ai-result span {
+  color: var(--illustration-muted);
+}
+
+.app-window .script-glass-modal > label > span,
+.app-window .script-access small,
+.app-window .script-modal-actions button:first-child {
+  color: var(--illustration-muted);
+}
+
+.app-window .script-glass-modal input[type="text"],
+.app-window .script-glass-modal textarea,
+.app-window .script-access strong {
+  color: var(--illustration-text);
+}
+
+.app-window .client-details dd,
+.app-window .event strong,
+.app-window .objection-row strong,
+.app-window .task-item strong,
+.app-window .task-detail dd,
+.app-window .phrase strong,
+.app-window .insight-card strong,
+.app-window .ai-result strong {
+  color: var(--illustration-text);
+}
+
+.app-window .stages-column li {
+  color: var(--illustration-soft);
+}
+
+.app-window .stages-column li.is-done,
+.app-window .stages-column li.is-active {
+  color: #4d5b71;
+}
+
+.app-window .comment-box::placeholder,
+.app-window input::placeholder,
+.app-window textarea::placeholder {
+  color: #7b8799;
+  opacity: 1;
+}
+
+.app-window .task-item.is-complete {
+  opacity: 0.76;
+}
+
 .demo-toast {
   position: fixed;
   z-index: 300;
