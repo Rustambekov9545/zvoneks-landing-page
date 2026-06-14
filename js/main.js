@@ -178,12 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showScenario(scenarios[requestedFeature] ? requestedFeature : "calls");
 
   initHeader();
-  initMockNavigation(toast);
-  initCallScreens(toast);
-  initScriptsScreen(toast);
-  initReportsScreen(toast);
-  initTasksScreen(toast);
-  initAiScreen(toast);
+  initIllustrationPreviews();
 });
 
 function createListItem(text) {
@@ -216,6 +211,16 @@ function initHeader() {
     const isOpen = header?.classList.toggle("is-open") ?? false;
     menuButton.setAttribute("aria-expanded", String(isOpen));
     menuButton.classList.toggle("is-open", isOpen);
+  });
+}
+
+function initIllustrationPreviews() {
+  document.querySelectorAll(".app-window").forEach((preview) => {
+    preview.inert = true;
+    preview.setAttribute("aria-hidden", "true");
+    preview.querySelectorAll("button, a, input, textarea, select, [tabindex]").forEach((element) => {
+      element.tabIndex = -1;
+    });
   });
 }
 
