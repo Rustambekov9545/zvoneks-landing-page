@@ -679,7 +679,7 @@ svg {
 .app-grid {
   height: calc(100% - 37px);
   display: grid;
-  grid-template-columns: 28% 45% 27%;
+  grid-template-columns: 28fr 45fr 27fr;
 }
 
 .client-column,
@@ -1225,7 +1225,7 @@ svg {
   position: relative;
   height: 100%;
   display: grid;
-  grid-template-columns: 24% 49% 27%;
+  grid-template-columns: 24fr 49fr 27fr;
   transform-style: preserve-3d;
   border-radius: 0 0 10px 10px;
   background: #fff;
@@ -1652,7 +1652,7 @@ svg {
 }
 
 .script-layout {
-  grid-template-columns: 27% 46% 27%;
+  grid-template-columns: 27fr 46fr 27fr;
 }
 
 .script-client,
@@ -1980,7 +1980,7 @@ svg {
 
 .report-content {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 60fr 40fr;
   gap: 7px;
   height: 190px;
   margin-top: 7px;
@@ -2182,7 +2182,7 @@ svg {
 .kpi-workspace {
   height: 202px;
   display: grid;
-  grid-template-columns: 31% 36% 33%;
+  grid-template-columns: 31fr 36fr 33fr;
   gap: 6px;
   margin-top: 6px;
 }
@@ -2693,7 +2693,7 @@ svg {
 }
 
 .tasks-layout {
-  grid-template-columns: 24% 46% 30%;
+  grid-template-columns: 24fr 46fr 30fr;
 }
 
 .task-filters h3,
@@ -3068,7 +3068,7 @@ svg {
 }
 
 .ai-layout {
-  grid-template-columns: 25% 48% 27%;
+  grid-template-columns: 25fr 48fr 27fr;
 }
 
 .ai-score-panel > small {
@@ -3580,7 +3580,7 @@ svg {
 }
 
 .app-grid {
-  grid-template-columns: 27% 46% 27%;
+  grid-template-columns: 27fr 46fr 27fr;
   gap: 6px;
   padding: 7px;
 }
@@ -3720,7 +3720,7 @@ svg {
 }
 
 .scripts-surface {
-  grid-template-columns: 24% 49% 27%;
+  grid-template-columns: 24fr 49fr 27fr;
   gap: 6px;
   border-radius: 9px;
   background: transparent;
@@ -3842,7 +3842,7 @@ svg {
 }
 
 .tasks-layout {
-  grid-template-columns: 24% 46% 30%;
+  grid-template-columns: 24fr 46fr 30fr;
   gap: 6px;
   padding: 7px;
 }
@@ -3898,7 +3898,7 @@ svg {
 }
 
 .ai-layout {
-  grid-template-columns: 25% 48% 27%;
+  grid-template-columns: 25fr 48fr 27fr;
   gap: 6px;
   padding: 7px;
 }
@@ -4070,7 +4070,7 @@ svg {
   .app-window {
     width: 100%;
     height: 100%;
-    zoom: 1.18;
+    zoom: 1;
   }
 }
 
