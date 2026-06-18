@@ -23,9 +23,9 @@ const scenarios = {
   reports: {
     tag: "Отчёты и KPI",
     title: "Устанавливайте KPI и контролируйте результат каждого менеджера",
-    text: "Создавайте KPI по звонкам и целевым действиям, сравнивайте выполнение плана, слушайте разговоры и находите потери на этапах сделки.",
+    text: "Создавайте KPI по звонкам, отправленным КП, длительности разговора и успешным сделкам. Сравнивайте выполнение плана, слушайте разговоры и находите потери на этапах сделки.",
     items: [
-      "Настройка KPI по звонкам, дозвонам и целевым действиям",
+      "Настройка KPI по звонкам, КП, длительности и сделкам",
       "Выполнение плана по каждому менеджеру",
       "Прослушивание звонков прямо из отчёта",
       "Аналитика конверсии по этапам сделки"
@@ -83,9 +83,9 @@ const objections = {
 };
 
 const reportPeriods = [
-  { label: "03–09 июня", calls: "1 284", reach: "86%", duration: "03:42", actions: "146" },
-  { label: "27 мая–02 июня", calls: "1 126", reach: "81%", duration: "03:24", actions: "131" },
-  { label: "20–26 мая", calls: "984", reach: "76%", duration: "03:16", actions: "119" }
+  { label: "03–09 июня", calls: "1 284", reach: "86%", duration: "03:42" },
+  { label: "27 мая–02 июня", calls: "1 126", reach: "81%", duration: "03:24" },
+  { label: "20–26 мая", calls: "984", reach: "76%", duration: "03:16" }
 ];
 
 const taskSets = {
@@ -624,8 +624,7 @@ function initReportsScreen(toast) {
       `Период,${period.label}`,
       `Всего звонков,${period.calls.replace(" ", "")}`,
       `Выполнение KPI,${period.reach}`,
-      `Средняя длительность,${period.duration}`,
-      `Целевые действия,${period.actions}`
+      `Средняя длительность,${period.duration}`
     ].join("\n");
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
     const link = document.createElement("a");

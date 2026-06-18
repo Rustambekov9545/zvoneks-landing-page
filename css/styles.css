@@ -2137,7 +2137,7 @@ svg {
 /* KPI workspace */
 .kpi-overview {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 6px;
   margin-top: 7px;
 }
@@ -2180,7 +2180,7 @@ svg {
 }
 
 .kpi-workspace {
-  height: 202px;
+  height: 270px;
   display: grid;
   grid-template-columns: 31fr 36fr 33fr;
   gap: 6px;
@@ -2209,7 +2209,14 @@ svg {
 
 .kpi-create-card {
   position: relative;
-  box-shadow: 0 8px 20px rgba(55, 69, 103, 0.08);
+  border-color: rgba(103, 91, 219, 0.55);
+  background:
+    radial-gradient(circle at 100% 0, rgba(104, 117, 223, 0.13), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(244, 247, 255, 0.9));
+  box-shadow:
+    0 0 0 1px rgba(103, 91, 219, 0.12),
+    0 14px 32px rgba(64, 55, 123, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
 .kpi-create-card::before {
@@ -2217,7 +2224,11 @@ svg {
   inset: 0;
   content: "";
   pointer-events: none;
-  background: radial-gradient(circle at 100% 0, rgba(90, 207, 183, 0.1), transparent 36%);
+  background:
+    linear-gradient(rgba(104, 117, 223, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 117, 223, 0.055) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.65;
 }
 
 .kpi-card-head {
@@ -2247,17 +2258,38 @@ svg {
   height: 14px;
   display: grid;
   place-items: center;
-  color: #fff;
-  border-radius: 4px;
-  background: linear-gradient(145deg, #6875df, #43c9b1);
+  color: #8a94a7;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(213, 219, 233, 0.78);
   font-size: 8px;
+}
+
+.kpi-template-chips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 5px;
+}
+
+.kpi-template-chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 15px;
+  padding: 3px 5px;
+  color: #627087;
+  border: 1px solid rgba(218, 224, 237, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  line-height: 1.15;
 }
 
 .kpi-create-card > label,
 .kpi-form-row label {
   position: relative;
   display: block;
-  margin-top: 6px;
+  margin-top: 4px;
   color: #7b8596;
   font-size: 4.2px;
 }
@@ -2286,8 +2318,64 @@ svg {
 
 .kpi-form-row {
   display: grid;
-  grid-template-columns: 1.35fr 0.8fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 5px;
+}
+
+.kpi-color-dots {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.kpi-color-dots span {
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 50%;
+  background: #6875df;
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px rgba(214, 220, 233, 0.82);
+}
+
+.kpi-color-dots span:nth-child(2) { background: #43c9b1; }
+.kpi-color-dots span:nth-child(3) { background: #f0a842; }
+.kpi-color-dots span:nth-child(4) { background: #ef5e7c; }
+.kpi-color-dots span:nth-child(5) { background: #53a9df; }
+
+.kpi-color-dots span.is-active {
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px rgba(104, 117, 223, 0.58);
+}
+
+.kpi-rule-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.kpi-rule-grid span {
+  min-width: 0;
+  display: block;
+  padding: 4px;
+  border: 1px solid rgba(219, 225, 237, 0.9);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.kpi-rule-grid span.is-active {
+  border-color: rgba(103, 91, 219, 0.58);
+  background: rgba(244, 245, 255, 0.92);
+}
+
+.kpi-rule-grid strong,
+.kpi-rule-grid small {
+  display: block;
+}
+
+.kpi-rule-grid small {
+  display: none;
 }
 
 .kpi-plan-input {
@@ -2310,7 +2398,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 4px;
+  padding: 3px 4px;
   border-radius: 4px;
   background: #f5f7fb;
   cursor: pointer;
@@ -2368,8 +2456,8 @@ svg {
 
 .kpi-create-card > button {
   width: 100%;
-  margin-top: 6px;
-  padding: 6px;
+  margin-top: 4px;
+  padding: 4px;
   color: #fff;
   border-radius: 4px;
   background: linear-gradient(90deg, #6875df, #43c9b1);

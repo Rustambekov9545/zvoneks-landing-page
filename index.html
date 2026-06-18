@@ -337,37 +337,47 @@
                 <div class="kpi-overview">
                   <article><span>Звонки</span><strong data-metric="calls">1 284</strong><em>План 1 400</em></article>
                   <article><span>Выполнение KPI</span><strong data-metric="reach">86%</strong><em class="is-positive">↑ 8%</em></article>
-                  <article><span>Целевые действия</span><strong data-metric="actions">146</strong><em>План 160</em></article>
                 </div>
                 <div class="kpi-workspace">
                   <form class="kpi-create-card" data-kpi-form>
                     <div class="kpi-card-head">
-                      <div><small>Настройки → KPI</small><h3>Создать KPI</h3></div>
-                      <span>+</span>
+                      <div><small>Настройки / KPI</small><h3>Добавить показатель</h3></div>
+                      <span>×</span>
                     </div>
-                    <label>Название KPI<input type="text" value="Звонки менеджеров" required></label>
+                    <div class="kpi-template-chips" aria-label="Шаблоны KPI">
+                      <span>Общее количество звонков</span>
+                      <span>Отправлено КП</span>
+                      <span>Разговоры от 30 секунд</span>
+                    </div>
+                    <label>Название показателя<input type="text" value="Количество звонков" required></label>
                     <div class="kpi-form-row">
-                      <label>Показатель<select data-kpi-metric><option value="calls">Количество звонков</option><option value="duration">Время разговора</option><option value="actions">Целевые действия</option></select></label>
-                      <label>Период<select><option>Неделя</option><option>Месяц</option></select></label>
+                      <label>Цель<input type="number" value="250" min="1" required></label>
+                      <label>Единица<select data-kpi-metric><option value="calls">Звонки</option><option value="proposal">КП</option><option value="duration">30+ секунд</option><option value="deal">Сделки</option></select></label>
                     </div>
-                    <label>План на менеджера<div class="kpi-plan-input"><input type="number" value="250" min="1" required><span>звонков</span></div></label>
-                    <label class="kpi-toggle"><input type="checkbox" checked><i></i><span><strong>Учитывать только дозвоны</strong><small>Исключить звонки без ответа</small></span></label>
-                    <button type="submit">Создать KPI</button>
+                    <div class="kpi-color-dots" aria-label="Цвет показателя">
+                      <span class="is-active"></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="kpi-rule-grid">
+                      <span class="is-active"><strong>Все звонки</strong><small>Учитываются все исходящие</small></span>
+                      <span><strong>Минимальная длительность</strong><small>Звонки от 30 секунд</small></span>
+                    </div>
+                    <label class="kpi-toggle"><input type="checkbox" checked><i></i><span><strong>Всем пользователям</strong><small>KPI применится ко всему отделу</small></span></label>
+                    <button type="submit">Добавить показатель</button>
                   </form>
 
                   <section class="kpi-managers-panel">
                     <div class="panel-heading"><div><small>Выполнение KPI</small><h3>По менеджерам</h3></div><span class="kpi-period">Неделя</span></div>
                     <div class="manager-kpi-row is-selected" role="button" tabindex="0" data-manager-kpi="Анна Смирнова" data-manager-score="92">
-                      <span class="manager-avatar">АС</span><div><strong>Анна Смирнова</strong><small>286 звонков · план 250</small><i><b style="width:92%"></b></i></div><em>92%</em>
+                      <span class="manager-avatar">АС</span><div><strong>Анна Смирнова</strong><small>Звонки · 286 из 250</small><i><b style="width:92%"></b></i></div><em>92%</em>
                     </div>
                     <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Денис Ковалёв" data-manager-score="86">
-                      <span class="manager-avatar">ДК</span><div><strong>Денис Ковалёв</strong><small>254 звонка · план 250</small><i><b style="width:86%"></b></i></div><em>86%</em>
+                      <span class="manager-avatar">ДК</span><div><strong>Денис Ковалёв</strong><small>Отправлено КП · 13 из 15</small><i><b style="width:86%"></b></i></div><em>86%</em>
                     </div>
                     <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Мария Иванова" data-manager-score="79">
-                      <span class="manager-avatar">МИ</span><div><strong>Мария Иванова</strong><small>239 звонков · план 250</small><i><b style="width:79%"></b></i></div><em>79%</em>
+                      <span class="manager-avatar">МИ</span><div><strong>Мария Иванова</strong><small>Звонки от 30 секунд · 79 из 100</small><i><b style="width:79%"></b></i></div><em>79%</em>
                     </div>
-                    <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Алексей Петров" data-manager-score="74">
-                      <span class="manager-avatar">АП</span><div><strong>Алексей Петров</strong><small>218 звонков · план 250</small><i><b style="width:74%"></b></i></div><em>74%</em>
+                    <div class="manager-kpi-row" role="button" tabindex="0" data-manager-kpi="Алексей Петров" data-manager-score="50">
+                      <span class="manager-avatar">АП</span><div><strong>Алексей Петров</strong><small>Успешные сделки · 15 из 30</small><i><b style="width:50%"></b></i></div><em>50%</em>
                     </div>
                   </section>
 
