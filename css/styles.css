@@ -2182,8 +2182,8 @@ svg {
 .kpi-workspace {
   height: 270px;
   display: grid;
-  grid-template-columns: 31fr 36fr 33fr;
-  gap: 6px;
+  grid-template-columns: 42fr 58fr;
+  gap: 8px;
   margin-top: 6px;
 }
 
