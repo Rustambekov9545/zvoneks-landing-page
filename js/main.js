@@ -113,6 +113,7 @@ const taskSets = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  const showcase = document.querySelector(".feature-showcase");
   const tabs = [...document.querySelectorAll(".feature-tab")];
   const previews = [...document.querySelectorAll("[data-preview]")];
   const scenario = document.querySelector(".scenario");
@@ -121,10 +122,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const text = document.querySelector("[data-scenario-text]");
   const list = document.querySelector("[data-scenario-list]");
   const toast = createToastController();
+  const featureKeys = tabs.map((tab) => tab.dataset.feature).filter(Boolean);
+  const cycleDelay = 8000;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeFeature = "";
+  let cycleTimer;
 
-  const showScenario = (key) => {
+  const stopFeatureCycle = () => {
+    clearTimeout(cycleTimer);
+    cycleTimer = undefined;
+  };
+
+  const isFeaturePaused = () => (
+    Boolean(showcase?.matches(":hover")) ||
+    Boolean(showcase?.contains(document.activeElement))
+  );
+
+  const pauseFeatureCycle = () => {
+    stopFeatureCycle();
+    showcase?.classList.add("is-paused");
+  };
+
+  const startFeatureCycle = () => {
+    stopFeatureCycle();
+
+    if (reducedMotion.matches || featureKeys.length < 2 || isFeaturePaused()) {
+      showcase?.classList.toggle("is-paused", isFeaturePaused());
+      return;
+    }
+
+    showcase?.classList.remove("is-paused");
+    cycleTimer = setTimeout(() => {
+      const currentIndex = Math.max(0, featureKeys.indexOf(activeFeature));
+      const nextKey = featureKeys[(currentIndex + 1) % featureKeys.length];
+      showScenario(nextKey, { updateUrl: false });
+      startFeatureCycle();
+    }, cycleDelay);
+  };
+
+  const showScenario = (key, options = {}) => {
     const data = scenarios[key];
     if (!data || !scenario || !tag || !title || !text || !list) return;
+    if (activeFeature === key) return;
+    activeFeature = key;
 
     tabs.forEach((tab) => {
       const active = tab.dataset.feature === key;
@@ -149,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.dispatchEvent(new CustomEvent("ai:stop"));
     }
 
-    if (history.replaceState) {
+    if (options.updateUrl !== false && history.replaceState) {
       const url = new URL(window.location.href);
       url.searchParams.set("feature", key);
       history.replaceState({}, "", url);
@@ -157,9 +197,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => showScenario(tab.dataset.feature));
+    tab.addEventListener("click", () => {
+      showScenario(tab.dataset.feature);
+      startFeatureCycle();
+    });
     tab.addEventListener("mouseenter", () => {
-      if (window.matchMedia("(hover: hover)").matches) showScenario(tab.dataset.feature);
+      if (!window.matchMedia("(hover: hover)").matches) return;
+      pauseFeatureCycle();
+      showScenario(tab.dataset.feature);
     });
     tab.addEventListener("keydown", (event) => {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
@@ -174,8 +219,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  showcase?.addEventListener("mouseenter", pauseFeatureCycle);
+  showcase?.addEventListener("mouseleave", startFeatureCycle);
+  showcase?.addEventListener("focusin", pauseFeatureCycle);
+  showcase?.addEventListener("focusout", () => {
+    window.setTimeout(startFeatureCycle, 0);
+  });
+  reducedMotion.addEventListener("change", startFeatureCycle);
+
   const requestedFeature = new URLSearchParams(window.location.search).get("feature");
   showScenario(scenarios[requestedFeature] ? requestedFeature : "calls");
+  startFeatureCycle();
 
   initHeader();
   initIllustrationPreviews();

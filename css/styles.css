@@ -207,6 +207,7 @@ svg {
 }
 
 .feature-showcase {
+  --feature-cycle-duration: 8000ms;
   min-height: calc(100vh - 44px);
   padding: 10px 0 44px;
 }
@@ -259,6 +260,19 @@ svg {
   opacity: 0;
 }
 
+.feature-tab::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--mint));
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
 .feature-tab:hover,
 .feature-tab.is-active {
   z-index: 1;
@@ -279,6 +293,15 @@ svg {
 
 .feature-tab.is-active::before {
   opacity: 1;
+}
+
+.feature-tab.is-active::after {
+  opacity: 1;
+  animation: feature-tab-progress var(--feature-cycle-duration) linear both;
+}
+
+.feature-showcase.is-paused .feature-tab.is-active::after {
+  animation-play-state: paused;
 }
 
 .feature-icon {
@@ -313,6 +336,11 @@ svg {
 @keyframes feature-icon-active {
   0%, 100% { box-shadow: 0 5px 12px rgba(88, 105, 218, 0.18); }
   50% { box-shadow: 0 0 0 4px rgba(70, 190, 174, 0.08), 0 8px 18px rgba(70, 190, 174, 0.26); }
+}
+
+@keyframes feature-tab-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .feature-tab:active {
@@ -445,12 +473,32 @@ svg {
 }
 
 .scenario.is-changing > * {
-  animation: scenario-in 0.24s ease both;
+  animation: scenario-in 0.5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.scenario.is-changing > *:nth-child(2) {
+  animation-delay: 0.04s;
+}
+
+.scenario.is-changing > *:nth-child(3) {
+  animation-delay: 0.08s;
+}
+
+.scenario.is-changing > *:nth-child(4) {
+  animation-delay: 0.12s;
 }
 
 @keyframes scenario-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 .product-preview {
@@ -487,12 +535,20 @@ svg {
 
 .app-view.is-active {
   display: block;
-  animation: preview-in 0.26s ease both;
+  animation: preview-in 0.65s cubic-bezier(.45,.05,.15,1) both;
 }
 
 @keyframes preview-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(28px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0) scale(1);
+  }
 }
 
 .app-window {
