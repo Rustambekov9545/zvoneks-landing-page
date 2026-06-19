@@ -78,6 +78,7 @@ svg {
 .container {
   width: min(1168px, calc(100% - 40px));
   margin-inline: auto;
+  padding: 0;
 }
 
 .site-header {
@@ -3957,6 +3958,62 @@ svg {
   margin: 0;
   border: 0;
   visibility: hidden;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .app-window {
+  border: 0;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .app-topbar {
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .scripts-contact,
+.app-view[data-preview="scripts"] .scripts-table,
+.app-view[data-preview="scripts"] .scripts-empty-panel {
+  border: 0;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .scripts-contact,
+.app-view[data-preview="scripts"] .scripts-table {
+  border-right: 0;
+}
+
+.app-view[data-preview="scripts"] .scripts-table {
+  background: rgba(252, 251, 255, 0.48);
+}
+
+.app-view[data-preview="scripts"] .scripts-table-tabs,
+.app-view[data-preview="scripts"] .scripts-table-tabs button.is-active,
+.app-view[data-preview="scripts"] .objection-row,
+.app-view[data-preview="scripts"] .script-history-row {
+  border: 0;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .scripts-table-tabs {
+  background: rgba(225, 226, 243, 0.36);
+}
+
+.app-view[data-preview="scripts"] .objection-row,
+.app-view[data-preview="scripts"] .script-history-row {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.app-view[data-preview="scripts"] .objection-row--active {
+  background: linear-gradient(120deg, rgba(235, 243, 255, 0.72), rgba(232, 249, 244, 0.58));
+}
+
+.app-view[data-preview="scripts"] .script-glass-modal {
+  border: 0;
+  box-shadow: none;
+}
+
+.app-view[data-preview="scripts"] .script-glass-modal::after {
   box-shadow: none;
 }
 
