@@ -4217,7 +4217,7 @@ svg {
 
 @media (min-width: 901px) {
   .workspace-card {
-    height: 440px;
+    height: 470px;
     grid-template-columns: 35% 65%;
   }
 
@@ -4346,24 +4346,27 @@ svg {
 
 /* Keep the reference proportions on large desktop screens. */
 @media (min-width: 1400px) {
-  .site-header,
-  .feature-showcase {
+  .site-header {
     zoom: 1.2;
   }
 
   .feature-showcase {
-    min-height: calc(83.333vh - 44px);
+    zoom: 1.35;
+  }
+
+  .feature-showcase {
+    min-height: calc(74.074vh - 44px);
   }
 }
 
 @media (min-width: 1700px) {
-  .site-header,
-  .feature-showcase {
+  .site-header {
     zoom: 1.5;
   }
 
   .feature-showcase {
-    min-height: calc(66.667vh - 44px);
+    zoom: 1.62;
+    min-height: calc(61.728vh - 44px);
   }
 }
 
