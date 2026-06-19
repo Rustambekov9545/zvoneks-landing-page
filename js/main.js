@@ -113,7 +113,8 @@ const taskSets = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const showcase = document.querySelector(".feature-showcase");
+  stabilizeReloadState();
+
   const tabs = [...document.querySelectorAll(".feature-tab")];
   const previews = [...document.querySelectorAll("[data-preview]")];
   const scenario = document.querySelector(".scenario");
@@ -122,45 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const text = document.querySelector("[data-scenario-text]");
   const list = document.querySelector("[data-scenario-list]");
   const toast = createToastController();
-  const featureKeys = tabs.map((tab) => tab.dataset.feature).filter(Boolean);
-  const cycleDelay = 8000;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let activeFeature = "";
-  let cycleTimer;
 
-  const stopFeatureCycle = () => {
-    clearTimeout(cycleTimer);
-    cycleTimer = undefined;
-  };
-
-  const isFeaturePaused = () => (
-    Boolean(showcase?.matches(":hover")) ||
-    Boolean(showcase?.contains(document.activeElement))
-  );
-
-  const pauseFeatureCycle = () => {
-    stopFeatureCycle();
-    showcase?.classList.add("is-paused");
-  };
-
-  const startFeatureCycle = () => {
-    stopFeatureCycle();
-
-    if (reducedMotion.matches || featureKeys.length < 2 || isFeaturePaused()) {
-      showcase?.classList.toggle("is-paused", isFeaturePaused());
-      return;
-    }
-
-    showcase?.classList.remove("is-paused");
-    cycleTimer = setTimeout(() => {
-      const currentIndex = Math.max(0, featureKeys.indexOf(activeFeature));
-      const nextKey = featureKeys[(currentIndex + 1) % featureKeys.length];
-      showScenario(nextKey, { updateUrl: false });
-      startFeatureCycle();
-    }, cycleDelay);
-  };
-
-  const showScenario = (key, options = {}) => {
+  const showScenario = (key) => {
     const data = scenarios[key];
     if (!data || !scenario || !tag || !title || !text || !list) return;
     if (activeFeature === key) return;
@@ -189,21 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.dispatchEvent(new CustomEvent("ai:stop"));
     }
 
-    if (options.updateUrl !== false && history.replaceState) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("feature", key);
-      history.replaceState({}, "", url);
-    }
   };
 
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
-      showScenario(tab.dataset.feature);
-      startFeatureCycle();
-    });
-    tab.addEventListener("mouseenter", () => {
-      if (!window.matchMedia("(hover: hover)").matches) return;
-      pauseFeatureCycle();
       showScenario(tab.dataset.feature);
     });
     tab.addEventListener("keydown", (event) => {
@@ -219,21 +173,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  showcase?.addEventListener("mouseenter", pauseFeatureCycle);
-  showcase?.addEventListener("mouseleave", startFeatureCycle);
-  showcase?.addEventListener("focusin", pauseFeatureCycle);
-  showcase?.addEventListener("focusout", () => {
-    window.setTimeout(startFeatureCycle, 0);
-  });
-  reducedMotion.addEventListener("change", startFeatureCycle);
-
-  const requestedFeature = new URLSearchParams(window.location.search).get("feature");
-  showScenario(scenarios[requestedFeature] ? requestedFeature : "calls");
-  startFeatureCycle();
+  showScenario("calls");
 
   initHeader();
   initIllustrationPreviews();
 });
+
+function stabilizeReloadState() {
+  if (history.replaceState) {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("feature")) {
+      url.searchParams.delete("feature");
+      history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
+  preserveReloadScrollPosition();
+}
+
+function preserveReloadScrollPosition() {
+  const storageKey = `zvoneks-scroll:${window.location.pathname}`;
+  const savePosition = () => {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify({
+        x: window.scrollX,
+        y: window.scrollY,
+        savedAt: Date.now()
+      }));
+    } catch {
+      // Ignore storage errors; scroll restore is a visual enhancement.
+    }
+  };
+
+  window.addEventListener("pagehide", savePosition);
+  window.addEventListener("beforeunload", savePosition);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") savePosition();
+  });
+
+  const navigation = performance.getEntriesByType?.("navigation")?.[0];
+  if (navigation?.type !== "reload") return;
+
+  let savedPosition;
+  try {
+    savedPosition = JSON.parse(sessionStorage.getItem(storageKey) || "null");
+  } catch {
+    savedPosition = null;
+  }
+
+  if (!savedPosition || typeof savedPosition.y !== "number") return;
+
+  const restorePosition = () => {
+    const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo({
+      left: savedPosition.x || 0,
+      top: Math.min(savedPosition.y, maxY),
+      behavior: "auto"
+    });
+  };
+
+  requestAnimationFrame(restorePosition);
+  window.addEventListener("load", () => {
+    restorePosition();
+    [80, 240, 600, 1200].forEach((delay) => setTimeout(restorePosition, delay));
+  }, { once: true });
+}
 
 function createListItem(text) {
   const item = document.createElement("li");
