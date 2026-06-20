@@ -4735,6 +4735,10 @@ svg {
     zoom: 1.35;
   }
 
+  .feature-showcase > .container {
+    width: calc((100vw - 176px) * 0.74074074);
+  }
+
   .feature-showcase {
     min-height: calc(74.074vh - var(--header-height));
   }
@@ -4744,6 +4748,10 @@ svg {
   .feature-showcase {
     zoom: 1.62;
     min-height: calc(61.728vh - var(--header-height));
+  }
+
+  .feature-showcase > .container {
+    width: calc((100vw - 176px) * 0.61728395);
   }
 }
 

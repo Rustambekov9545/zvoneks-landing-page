@@ -599,6 +599,11 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
   box-shadow: 0 4px 14px rgba(52, 211, 153, 0.22);
 }
 
+.hero-feature:nth-child(4) .hero-feature__icon {
+  background: linear-gradient(145deg, #5BB6F0, #34D399);
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.24);
+}
+
 .hero-feature p {
   margin: 0;
   font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
