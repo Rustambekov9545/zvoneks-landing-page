@@ -447,7 +447,7 @@ svg {
 .scenario > p {
   max-width: 540px;
   margin-top: 14px;
-  color: #66728a;
+  color: #263248;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.72;
@@ -464,7 +464,7 @@ svg {
 .scenario li {
   position: relative;
   padding-left: 18px;
-  color: #5f6c83;
+  color: #263248;
   font-size: 9.4px;
   font-weight: 400;
   line-height: 1.45;
@@ -1359,16 +1359,22 @@ svg {
 }
 
 .add-script-button {
+  height: 24px;
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  padding: 4px 6px;
+  gap: 2px;
+  padding: 0 7px;
   color: #6170d7;
   border: 1px solid #dce2f7;
   border-radius: 5px;
   background: #fff;
-  font-size: 4.5px;
+  font-size: 4.2px;
   font-weight: 700;
+}
+
+.add-script-button .ui-icon {
+  width: 7px;
+  height: 7px;
 }
 
 .add-script-button:hover {
@@ -1497,11 +1503,52 @@ svg {
   line-height: 1.45;
 }
 
+.script-summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgba(198, 228, 222, 0.86);
+  border-radius: 7px;
+  background: linear-gradient(110deg, rgba(247, 255, 252, 0.98), rgba(239, 248, 255, 0.88));
+}
+
+.script-summary-card span,
+.script-summary-card strong,
+.script-summary-card em {
+  display: block;
+}
+
+.script-summary-card span {
+  color: #7e8998;
+  font-size: 4.5px;
+  font-weight: 700;
+}
+
+.script-summary-card strong {
+  margin-top: 2px;
+  color: #263248;
+  font-size: 5.8px;
+}
+
+.script-summary-card em {
+  flex: 0 0 auto;
+  padding: 3px 6px;
+  color: #17a177;
+  border-radius: 999px;
+  background: rgba(45, 205, 156, 0.12);
+  font-size: 4.6px;
+  font-style: normal;
+  font-weight: 800;
+}
+
 .scripts-empty-panel {
   position: relative;
   z-index: 1;
   padding: 10px;
-  background: transparent;
+  background: #fff;
   opacity: 1;
   filter: none;
 }
@@ -1522,15 +1569,16 @@ svg {
   right: 16px;
   width: 166px;
   padding: 10px;
-  border: 1px solid rgba(211, 219, 237, 0.92);
+  border: 1px solid rgba(196, 230, 220, 0.92);
   border-radius: 12px;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(241, 244, 255, 0.93));
+    radial-gradient(circle at 86% 2%, rgba(70, 207, 177, 0.22), transparent 40%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(232, 252, 247, 0.96));
   box-shadow:
-    0 18px 40px rgba(64, 55, 123, 0.17),
-    0 5px 16px rgba(70, 78, 114, 0.1),
+    0 18px 40px rgba(44, 124, 111, 0.14),
+    0 5px 16px rgba(65, 99, 93, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    inset 0 -1px 0 rgba(202, 211, 231, 0.36);
+    inset 0 -1px 0 rgba(190, 226, 216, 0.34);
   backdrop-filter: blur(14px) saturate(125%);
   -webkit-backdrop-filter: blur(14px) saturate(125%);
   opacity: 0;
@@ -1689,24 +1737,29 @@ svg {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5px;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: 7px;
 }
 
 .script-modal-actions button {
-  padding: 5px 7px;
+  padding: 4px 6px;
   color: #59667b;
   border-radius: 5px;
-  font-size: 5px;
+  font-size: 4.6px;
 }
 
 .script-modal-actions button:last-child {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   color: #fff;
-  background: linear-gradient(100deg, #6573dc, #727be7);
-  box-shadow: 0 4px 10px rgba(91, 101, 205, 0.24);
+  background: linear-gradient(100deg, #5f70dc, #41c4aa);
+  box-shadow: 0 4px 10px rgba(64, 173, 151, 0.22);
+}
+
+.script-modal-actions button:last-child .ui-icon {
+  width: 7px;
+  height: 7px;
 }
 
 .script-layout,
@@ -2607,6 +2660,47 @@ svg {
   font-weight: 700;
 }
 
+.kpi-week-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+  padding: 7px 8px;
+  border: 1px solid rgba(196, 230, 220, 0.78);
+  border-radius: 7px;
+  background: linear-gradient(110deg, rgba(246, 255, 252, 0.98), rgba(236, 248, 255, 0.9));
+}
+
+.kpi-week-summary span,
+.kpi-week-summary strong,
+.kpi-week-summary em {
+  display: block;
+}
+
+.kpi-week-summary span {
+  color: #7c8798;
+  font-size: 4.4px;
+  font-weight: 700;
+}
+
+.kpi-week-summary strong {
+  margin-top: 2px;
+  color: #263248;
+  font-size: 5.6px;
+}
+
+.kpi-week-summary em {
+  flex: 0 0 auto;
+  color: #17a177;
+  border-radius: 999px;
+  background: rgba(45, 205, 156, 0.12);
+  padding: 3px 6px;
+  font-size: 4.8px;
+  font-style: normal;
+  font-weight: 800;
+}
+
 .report-tabs {
   display: flex;
   gap: 3px;
@@ -2887,12 +2981,27 @@ svg {
 }
 
 .task-filters b {
-  color: #788397;
-  font-size: 5px;
+  min-width: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 5px;
+  color: #35425a;
+  border-radius: 999px;
+  background: rgba(226, 233, 245, 0.85);
+  font-size: 7px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .task-filters b.is-danger {
-  color: #e2656d;
+  color: #fff;
+  background: #e85e6b;
+}
+
+.task-filters > button.is-active b {
+  color: #fff;
+  background: #6573df;
 }
 
 .task-filters h4 {
@@ -3337,20 +3446,23 @@ svg {
 }
 
 .play-button {
-  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
   align-items: center;
-  gap: 3px;
-  padding: 5px 7px;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 0;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 7px;
   background: #6875df;
-  font-size: 5px;
+  box-shadow: 0 5px 12px rgba(104, 117, 223, 0.22);
 }
 
 .voice-controls {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
 .voice-badge {
@@ -3369,6 +3481,20 @@ svg {
 .voice-badge .ui-icon {
   width: 8px;
   height: 8px;
+}
+
+.play-button .ui-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.audio-time {
+  min-width: 22px;
+  color: #263248;
+  font-size: 6px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .voice-controls.is-speaking .voice-badge {
@@ -3396,17 +3522,46 @@ svg {
 }
 
 .audio-wave {
-  height: 34px;
+  position: relative;
+  height: 30px;
   display: flex;
   align-items: center;
   gap: 3px;
-  margin-top: 8px;
+  margin-top: 6px;
   padding: 0 8px;
+  overflow: hidden;
   border-radius: 6px;
-  background: #f5f7fb;
+  background: linear-gradient(100deg, #f7f9ff 0%, #eefbf7 100%);
+}
+
+.audio-wave::before {
+  content: "";
+  position: absolute;
+  right: 8px;
+  left: 8px;
+  top: 50%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(104, 117, 223, 0.38), rgba(70, 200, 175, 0.26), rgba(70, 200, 175, 0.4));
+  box-shadow: 0 0 8px rgba(70, 200, 175, 0.12);
+  transform: translateY(-50%);
+}
+
+.audio-wave::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  left: 88px;
+  top: 50%;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, transparent 0 13px, rgba(70, 200, 175, 0.18) 13px 14px, transparent 14px 22px);
+  opacity: 0.75;
+  transform: translateY(-50%);
 }
 
 .audio-wave i {
+  position: relative;
+  z-index: 2;
   width: 3px;
   height: 12px;
   display: block;
@@ -3426,6 +3581,17 @@ svg {
 .audio-wave.is-playing i:nth-child(2n) { animation-delay: -0.18s; }
 .audio-wave.is-playing i:nth-child(3n) { animation-delay: -0.34s; }
 .audio-wave.is-playing i:nth-child(4n) { animation-delay: -0.48s; }
+
+.audio-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 4px 0;
+  color: #8894aa;
+  font-size: 4.4px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 
 @keyframes audio-pulse {
   from { transform: scaleY(0.45); opacity: 0.55; }
@@ -4011,8 +4177,8 @@ svg {
   display: grid;
   align-content: start;
   gap: 7px;
-  border-color: transparent;
-  background: transparent;
+  border-color: rgba(211, 218, 233, 0.78);
+  background: #fff;
   box-shadow: none;
 }
 
@@ -4039,7 +4205,7 @@ svg {
 .app-view[data-preview="scripts"] .scripts-contact,
 .app-view[data-preview="scripts"] .scripts-table,
 .app-view[data-preview="scripts"] .scripts-empty-panel {
-  border: 1px solid rgba(211, 218, 233, 0.78);
+  border: 1px solid rgba(202, 229, 222, 0.78);
   box-shadow: none;
 }
 
@@ -4074,8 +4240,8 @@ svg {
 }
 
 .app-view[data-preview="scripts"] .script-glass-modal {
-  border: 1px solid rgba(216, 224, 238, 0.92);
-  box-shadow: 0 12px 28px rgba(48, 61, 96, 0.11);
+  border: 1px solid rgba(196, 230, 220, 0.92);
+  box-shadow: 0 12px 28px rgba(45, 117, 105, 0.12);
 }
 
 .app-view[data-preview="scripts"] .script-glass-modal::after {

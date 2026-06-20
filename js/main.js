@@ -17,7 +17,7 @@ const scenarios = {
     items: [
       "Сценарий разговора по этапам воронки",
       "Быстрые ответы на типовые возражения",
-      "Руководитель обновляет скрипты централизованно"
+      "Добавляйте и обновляйте сценарии как для всех, так и для конкретного сотрудника"
     ]
   },
   reports: {
@@ -1024,9 +1024,11 @@ function initAiScreen(toast) {
   const phraseNodes = [...document.querySelectorAll(".transcript-panel .phrase")];
   const synthesis = window.speechSynthesis;
   const canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-  let seconds = 0;
+  const audioDuration = 154;
+  const initialAudioSecond = 76;
+  let seconds = initialAudioSecond;
   let timer;
-  let currentPhrase = 0;
+  let currentPhrase = 2;
   let isPaused = false;
   let isSpeaking = false;
   let voices = [];
@@ -1041,7 +1043,7 @@ function initAiScreen(toast) {
   button?.addEventListener("click", () => {
     if (!canSpeak) {
       toggleVisualFallback();
-      toast("Голосовой движок недоступен, включена демонстрация");
+      toast("Включена демо-запись");
       return;
     }
 
@@ -1050,29 +1052,31 @@ function initAiScreen(toast) {
       isPaused = true;
       setPlaybackState(false, "Пауза");
       stopTimer();
-      toast("Озвучивание приостановлено");
+      toast("Запись на паузе");
       return;
     }
 
     if (isSpeaking && isPaused) {
       synthesis.resume();
       isPaused = false;
-      setPlaybackState(true, "Говорит");
+      setPlaybackState(true, "Идёт");
       startTimer();
-      toast("Озвучивание продолжено");
+      toast("Запись продолжена");
       return;
     }
 
-    currentPhrase = 0;
-    seconds = 0;
-    if (time) time.textContent = "00:00";
+    if (seconds >= audioDuration) {
+      seconds = 0;
+    }
+    currentPhrase = getPhraseIndexBySecond(seconds);
+    renderAudioProgress();
     isSpeaking = true;
     isPaused = false;
     synthesis.cancel();
-    setPlaybackState(true, "Говорит");
+    setPlaybackState(true, "Идёт");
     startTimer();
     speakPhrase();
-    toast("Включено голосовое озвучивание");
+    toast("Запись воспроизводится");
   });
 
   document.querySelectorAll(".insight-card").forEach((card) => {
@@ -1099,13 +1103,13 @@ function initAiScreen(toast) {
       synthesis.cancel();
       currentPhrase = index;
       seconds = parseTranscriptTime(phrase.querySelector(":scope > span")?.textContent);
-      if (time) time.textContent = formatTime(seconds);
+      renderAudioProgress();
       isSpeaking = true;
       isPaused = false;
-      setPlaybackState(true, "Говорит");
+      setPlaybackState(true, "Идёт");
       startTimer();
       speakPhrase();
-      toast("Озвучивается выбранная фраза");
+      toast("Воспроизводится выбранный фрагмент");
     };
     phrase.addEventListener("click", playPhrase);
     phrase.addEventListener("keydown", (event) => {
@@ -1154,11 +1158,14 @@ function initAiScreen(toast) {
 
   document.addEventListener("ai:stop", () => stopSpeech(true));
   window.addEventListener("beforeunload", () => synthesis?.cancel());
+  renderAudioProgress();
 
   function speakPhrase() {
     if (!isSpeaking || currentPhrase >= phraseNodes.length) {
+      seconds = audioDuration;
+      renderAudioProgress();
       stopSpeech(false);
-      toast("Озвучивание завершено");
+      toast("Запись завершена");
       return;
     }
 
@@ -1194,7 +1201,7 @@ function initAiScreen(toast) {
     clearInterval(timer);
     timer = setInterval(() => {
       seconds += 1;
-      if (time) time.textContent = formatTime(seconds);
+      renderAudioProgress();
     }, 1000);
   }
 
@@ -1208,7 +1215,7 @@ function initAiScreen(toast) {
     wave?.classList.toggle("is-playing", playing);
     voiceControls?.classList.toggle("is-speaking", playing);
     if (voiceStatus) voiceStatus.textContent = status;
-    button?.setAttribute("aria-label", playing ? "Поставить озвучивание на паузу" : "Озвучить диалог");
+    button?.setAttribute("aria-label", playing ? "Поставить запись на паузу" : "Воспроизвести запись");
   }
 
   function stopSpeech(resetTime) {
@@ -1217,11 +1224,11 @@ function initAiScreen(toast) {
     isPaused = false;
     currentPhrase = 0;
     stopTimer();
-    setPlaybackState(false, "Голос");
+    setPlaybackState(false, "Запись");
     phraseNodes.forEach((phrase) => phrase.classList.remove("is-current"));
     if (resetTime) {
       seconds = 0;
-      if (time) time.textContent = "00:00";
+      renderAudioProgress();
     }
   }
 
@@ -1229,9 +1236,24 @@ function initAiScreen(toast) {
     const playing = button?.classList.toggle("is-playing") ?? false;
     wave?.classList.toggle("is-playing", playing);
     voiceControls?.classList.toggle("is-speaking", playing);
-    if (voiceStatus) voiceStatus.textContent = playing ? "Демо" : "Голос";
+    if (voiceStatus) voiceStatus.textContent = playing ? "Идёт" : "Запись";
     stopTimer();
     if (playing) startTimer();
+  }
+
+  function renderAudioProgress() {
+    const current = Math.min(seconds, audioDuration);
+    if (time) time.textContent = formatTime(current);
+  }
+
+  function getPhraseIndexBySecond(value) {
+    let index = 0;
+    phraseNodes.forEach((phrase, phraseIndex) => {
+      if (parseTranscriptTime(phrase.querySelector(":scope > span")?.textContent) <= value) {
+        index = phraseIndex;
+      }
+    });
+    return index;
   }
 
   function parseTranscriptTime(value = "00:00") {
