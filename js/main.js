@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const text = document.querySelector("[data-scenario-text]");
   const list = document.querySelector("[data-scenario-list]");
   const toast = createToastController();
+  const hoverQuery = window.matchMedia("(hover: hover)");
   let activeFeature = "";
 
   const showScenario = (key) => {
@@ -157,6 +158,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   tabs.forEach((tab, index) => {
+    tab.addEventListener("mouseenter", () => {
+      if (hoverQuery.matches) {
+        showScenario(tab.dataset.feature);
+      }
+    });
+
     tab.addEventListener("click", () => {
       showScenario(tab.dataset.feature);
     });
