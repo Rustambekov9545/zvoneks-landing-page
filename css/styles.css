@@ -4465,6 +4465,49 @@ svg {
   }
 }
 
+@media (min-width: 901px) and (max-height: 820px) {
+  .feature-showcase {
+    padding: 4px 0 24px;
+  }
+
+  .hero-copy p {
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+
+  .feature-tabs {
+    margin-top: 13px;
+  }
+
+  .workspace-card {
+    height: clamp(395px, calc(100vh - var(--header-height) - 178px), 430px);
+    margin-top: 13px;
+  }
+
+  .scenario {
+    padding: 18px 20px 20px;
+  }
+
+  .scenario h2 {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .scenario > p {
+    margin-top: 10px;
+    line-height: 1.58;
+  }
+
+  .scenario ul {
+    gap: 7px;
+    margin-top: 12px;
+  }
+
+  .product-preview {
+    padding: 8px 10px 10px 0;
+  }
+}
+
 .demo-toast {
   position: fixed;
   z-index: 300;
