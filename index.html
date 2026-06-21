@@ -24,15 +24,16 @@
       </a>
 
       <nav class="main-nav" aria-label="Основная навигация">
-        <a href="#features">Возможности</a>
+        <a href="#features">Возможности сервиса</a>
+        <a href="#integrations">Интеграции</a>
         <a href="#pricing">Тарифы</a>
-        <a href="#cases">Кейсы</a>
+        <a href="#features" data-feature-link="ai">АИ функции</a>
       </nav>
 
       <div class="header-actions">
         <a class="phone" href="tel:+78001234567">8 800 123-45-67</a>
         <a class="login" href="#">Войти</a>
-        <a class="trial-button" href="#cta">Попробуйте 7 дней бесплатно</a>
+        <a class="trial-button" href="#lead-form" data-lead-open data-lead-type="trial">Попробуйте 7 дней бесплатно</a>
       </div>
 
       <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">
@@ -85,11 +86,11 @@
           </div>
 
           <div class="hero__cta" id="cta">
-            <a href="#" class="btn btn--cta btn--lg">
+            <a href="#lead-form" class="btn btn--cta btn--lg" data-lead-open data-lead-type="trial">
               Попробуйте 7 дней бесплатно
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </a>
-            <a href="#" class="btn btn--outline btn--lg btn--demo">
+            <a href="#lead-form" class="btn btn--outline btn--lg btn--demo" data-lead-open data-lead-type="demo">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M8 7l5 3-5 3V7z" fill="currentColor"/></svg>
               Записаться на демонстрацию
             </a>
@@ -1172,6 +1173,84 @@
       </section>
     </div>
   </main>
+
+  <section class="integrations-section unified-send-section" id="integrations" aria-labelledby="integrations-title">
+    <div class="container unified-send-card">
+      <aside class="unified-copy">
+        <span class="unified-badge">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="14" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+          Все каналы. Один сервис. Отправка из единого интерфейса
+        </span>
+        <h2 id="integrations-title">Единый<br>контакт-центр</h2>
+        <div class="unified-features">
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="14" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="6" height="6" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></span><p>Все каналы в одном интерфейсе</p></article>
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 11 16-7-3.2 16-4.2-5.2-3.5 3.3.8-4.8L4 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><p>Отправка сообщений и каскадные рассылки</p></article>
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 12 8 4 8-4M4 17l8 4 8-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Отдельные шаблоны для WhatsApp, Telegram, MAX и Почты</p></article>
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><p>Персонализация шаблонов через переменные</p></article>
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 12 6.6-6.6a3 3 0 0 1 4.2 4.2l-8.4 8.4a4 4 0 0 1-5.7-5.7l7.7-7.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Отправка файлов и КП во вложении</p></article>
+          <article><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z" fill="currentColor"/></svg></span><p>Быстрый запуск без лишних действий</p></article>
+        </div>
+        <a class="unified-start" href="#lead-form" data-lead-open data-lead-type="trial">Начать сейчас <span>→</span></a>
+      </aside>
+
+      <div class="unified-channels" aria-label="Каналы отправки">
+        <button class="unified-channel is-active" type="button" data-unified-channel="whatsapp" aria-pressed="true" disabled><span class="unified-channel__icon unified-channel__icon--whatsapp"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 18.2 4 20l.8-3.1A8 8 0 1 1 12 20a8 8 0 0 1-5.4-1.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.2 8.4c.2-.3.5-.4.8-.3l.9.4c.3.1.4.4.3.7l-.3.7c-.1.2 0 .4.1.6.4.6 1 1.2 1.7 1.6.2.1.4.1.6 0l.7-.3c.3-.1.6 0 .7.3l.4.9c.1.3 0 .6-.3.8-.5.3-1 .5-1.6.4-1.7-.3-3.5-1.6-4.4-3.1-.4-.7-.5-1.4-.2-2.2Z" fill="currentColor"/></svg></span><span class="unified-channel__label">WhatsApp</span></button>
+        <button class="unified-channel" type="button" data-unified-channel="telegram" aria-pressed="false" disabled><span class="unified-channel__icon unified-channel__icon--telegram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 11 16-7-3.2 16-4.2-5.2-3.5 3.3.8-4.8L4 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="unified-channel__label">Telegram</span></button>
+        <button class="unified-channel" type="button" data-unified-channel="max" aria-pressed="false" disabled><span class="unified-channel__icon unified-channel__icon--max"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5.2" stroke="currentColor" stroke-width="3.2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></span><span class="unified-channel__label">MAX</span></button>
+        <button class="unified-channel" type="button" data-unified-channel="mail" aria-pressed="false" disabled><span class="unified-channel__icon unified-channel__icon--mail"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="6" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="unified-channel__label">Почта</span></button>
+      </div>
+
+      <div class="unified-composer">
+        <div class="unified-composer__head">
+          <h3 data-unified-title>Отправить через WhatsApp</h3>
+          <button type="button" aria-label="Закрыть" disabled>×</button>
+        </div>
+        <div class="composer-note"><span>Шаблон</span><strong>Сообщение клиенту</strong><p>Подставьте переменные, проверьте текст и отправьте сообщение через подходящий канал.</p></div>
+        <label class="unified-field"><span data-unified-contact-label>Телефон клиента</span><input type="text" value="+7 911 623 53 67" data-unified-phone disabled><small>Убедитесь, что номер активен в международном формате. Если в записной уже есть номера, он подставится автоматически.</small></label>
+        <label class="unified-field"><span>Шаблон</span><div class="unified-select"><span data-unified-template>Коммерческое предложение</span><b>⌄</b></div></label>
+        <label class="unified-field"><span>Сообщение</span><textarea data-unified-message disabled>Здравствуйте! Спасибо за обращение. Уважаемый ваш запрос&#10;и скоро свяжемся с ответом.</textarea></label>
+        <div class="attachment-row"><span>PDF</span><strong>Коммерческое предложение.pdf</strong><em>1.2 МБ</em><button type="button" disabled>×</button></div>
+        <div class="unified-actions"><button class="unified-cancel" type="button" disabled>Отмена</button><button class="unified-send" type="button" disabled>Отправить</button></div>
+      </div>
+
+      <aside class="send-preview" aria-label="Предпросмотр отправки">
+        <h3>Предпросмотр отправки</h3>
+        <div class="preview-card">
+          <strong>Иван Петров</strong>
+          <p data-preview-phone>Телефон: +7 911 623 53 67</p>
+          <div class="preview-channel" data-preview-channel><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 18.2 4 20l.8-3.1A8 8 0 1 1 12 20a8 8 0 0 1-5.4-1.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.2 8.4c.2-.3.5-.4.8-.3l.9.4c.3.1.4.4.3.7l-.3.7c-.1.2 0 .4.1.6.4.6 1 1.2 1.7 1.6.2.1.4.1.6 0l.7-.3c.3-.1.6 0 .7.3l.4.9c.1.3 0 .6-.3.8-.5.3-1 .5-1.6.4-1.7-.3-3.5-1.6-4.4-3.1-.4-.7-.5-1.4-.2-2.2Z" fill="currentColor"/></svg><span>WhatsApp</span></div>
+          <div class="preview-bubble" data-preview-bubble>Здравствуйте! Спасибо за обращение.<br>Уважаемый ваш запрос<br>и скоро свяжемся с ответом.<span>11:32 ✓✓</span></div>
+          <div class="preview-divider"></div>
+          <small>Вложение</small>
+          <div class="preview-file"><span>PDF</span><strong>Коммерческое предложение.pdf</strong><em>1.2 МБ</em></div>
+        </div>
+        <div class="ready-status"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Готово к отправке</div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="lead-modal" data-lead-modal aria-hidden="true">
+    <div class="lead-modal__backdrop" data-lead-close></div>
+    <form class="lead-modal__card" id="lead-form" data-lead-form role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+      <button class="lead-modal__close" type="button" aria-label="Закрыть форму" data-lead-close>×</button>
+      <span class="lead-modal__badge" data-lead-badge>7 дней бесплатно</span>
+      <h2 id="lead-modal-title" data-lead-title>Попробуйте Звонекс бесплатно</h2>
+      <p data-lead-text>Оставьте имя и телефон — мы свяжемся с вами, поможем открыть тестовый доступ и покажем сервис на ваших задачах.</p>
+      <label>
+        <span>Имя пользователя</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Например, Денис" required>
+      </label>
+      <label>
+        <span>Номер телефона</span>
+        <input type="tel" name="phone" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+      </label>
+      <label>
+        <span>Комментарий</span>
+        <textarea name="comment" rows="3" placeholder="Удобное время для звонка или вопрос"></textarea>
+      </label>
+      <button class="lead-modal__submit" type="submit">Отправить заявку</button>
+    </form>
+  </div>
 
   <div class="demo-toast" role="status" aria-live="polite" data-toast>
     <span class="demo-toast__icon">

@@ -180,9 +180,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll("[data-feature-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const key = link.dataset.featureLink;
+      if (!key) return;
+      event.preventDefault();
+      showScenario(key);
+      document.querySelector("#features")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const header = document.querySelector(".site-header");
+      const menuButton = document.querySelector(".menu-button");
+      header?.classList.remove("is-open");
+      menuButton?.classList.remove("is-open");
+      menuButton?.setAttribute("aria-expanded", "false");
+    });
+  });
+
   showScenario("calls");
 
   initHeader();
+  initLeadModal(toast);
   initIllustrationPreviews();
 });
 
@@ -277,6 +293,196 @@ function initHeader() {
     menuButton.setAttribute("aria-expanded", String(isOpen));
     menuButton.classList.toggle("is-open", isOpen);
   });
+}
+
+function initLeadModal(toast) {
+  const modal = document.querySelector("[data-lead-modal]");
+  const form = document.querySelector("[data-lead-form]");
+  const title = document.querySelector("[data-lead-title]");
+  const text = document.querySelector("[data-lead-text]");
+  const badge = document.querySelector("[data-lead-badge]");
+  const submit = form?.querySelector(".lead-modal__submit");
+  let lastActive = null;
+
+  if (!modal || !form) return;
+
+  const copy = {
+    trial: {
+      badge: "7 дней бесплатно",
+      title: "Попробуйте Звонекс бесплатно",
+      text: "Оставьте имя и телефон — мы свяжемся с вами, поможем открыть тестовый доступ и покажем сервис на ваших задачах.",
+      submit: "Получить доступ"
+    },
+    demo: {
+      badge: "Демонстрация",
+      title: "Записаться на демонстрацию",
+      text: "Оставьте контакты — покажем, как работают звонки, шаблоны сообщений, KPI и AI-анализ в одном окне.",
+      submit: "Записаться на демо"
+    }
+  };
+
+  const openModal = (type = "trial") => {
+    const state = copy[type] || copy.trial;
+    lastActive = document.activeElement;
+    if (badge) badge.textContent = state.badge;
+    if (title) title.textContent = state.title;
+    if (text) text.textContent = state.text;
+    if (submit) submit.textContent = state.submit;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("has-lead-modal");
+    window.setTimeout(() => form.querySelector("input")?.focus(), 80);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("has-lead-modal");
+    if (lastActive instanceof HTMLElement) lastActive.focus();
+  };
+
+  document.querySelectorAll("[data-lead-open]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal(button.dataset.leadType);
+    });
+  });
+
+  document.querySelectorAll("[data-lead-close]").forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = form.elements.namedItem("name")?.value?.trim();
+    toast(`Спасибо, ${name || "заявка принята"}! Мы скоро свяжемся.`);
+    form.reset();
+    closeModal();
+  });
+}
+
+function initUnifiedChannels() {
+  const root = document.querySelector(".unified-send-card");
+  if (!root) return;
+
+  const channels = [...root.querySelectorAll("[data-unified-channel]")];
+  const title = root.querySelector("[data-unified-title]");
+  const contactLabel = root.querySelector("[data-unified-contact-label]");
+  const contactInput = root.querySelector("[data-unified-phone]");
+  const template = root.querySelector("[data-unified-template]");
+  const message = root.querySelector("[data-unified-message]");
+  const sendButton = root.querySelector(".unified-send");
+  const previewPhone = root.querySelector("[data-preview-phone]");
+  const previewChannel = root.querySelector("[data-preview-channel]");
+  const previewBubble = root.querySelector("[data-preview-bubble]");
+
+  const data = {
+    whatsapp: {
+      label: "WhatsApp",
+      title: "Отправить через WhatsApp",
+      contactLabel: "Телефон клиента",
+      contactPrefix: "Телефон",
+      contact: "+7 911 623 53 67",
+      template: "Коммерческое предложение",
+      message: "Здравствуйте! Спасибо за обращение. Уважаемый ваш запрос\nи скоро свяжемся с ответом.",
+      time: "11:32",
+      send: "Отправить"
+    },
+    telegram: {
+      label: "Telegram",
+      title: "Отправить через Telegram",
+      contactLabel: "Telegram клиента",
+      contactPrefix: "Telegram",
+      contact: "@ivan_petrov",
+      template: "Напоминание о встрече",
+      message: "Иван, добрый день! Напоминаем о встрече сегодня в 15:00. Если нужно перенести время, напишите здесь.",
+      time: "12:18",
+      send: "Отправить"
+    },
+    max: {
+      label: "MAX",
+      title: "Отправить через MAX",
+      contactLabel: "Телефон клиента",
+      contactPrefix: "Телефон",
+      contact: "+7 952 485-83-19",
+      template: "Информация о компании",
+      message: "Здравствуйте! Подготовили краткую информацию о Звонексе: звонки из карточки клиента, шаблоны сообщений, задачи и отчёты по менеджерам.",
+      time: "13:04",
+      send: "Отправить"
+    },
+    mail: {
+      label: "Почта",
+      title: "Отправить на почту",
+      contactLabel: "Email клиента",
+      contactPrefix: "Email",
+      contact: "ivan.petrov@mail.ru",
+      template: "Коммерческое предложение",
+      message: "Здравствуйте! Направляем коммерческое предложение и краткое описание возможностей сервиса. Будем рады обсудить детали подключения.",
+      time: "14:25",
+      send: "Отправить"
+    }
+  };
+
+  const escapeHtml = (value) => value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+
+  const setChannel = (key) => {
+    const state = data[key] || data.whatsapp;
+    const active = channels.find((channel) => channel.dataset.unifiedChannel === key) || channels[0];
+
+    channels.forEach((channel) => {
+      const isActive = channel === active;
+      channel.classList.toggle("is-active", isActive);
+      channel.setAttribute("aria-pressed", String(isActive));
+    });
+
+    if (title) title.textContent = state.title;
+    if (contactLabel) contactLabel.textContent = state.contactLabel;
+    if (contactInput) contactInput.value = state.contact;
+    if (template) template.textContent = state.template;
+    if (message) message.value = state.message;
+    if (sendButton) sendButton.textContent = state.send;
+    if (previewPhone) previewPhone.textContent = `${state.contactPrefix}: ${state.contact}`;
+
+    if (previewChannel && active) {
+      const icon = active.querySelector(".unified-channel__icon")?.cloneNode(true);
+      const label = document.createElement("span");
+      label.textContent = state.label;
+      previewChannel.replaceChildren();
+      if (icon) previewChannel.append(icon);
+      previewChannel.append(label);
+    }
+
+    if (previewBubble) {
+      previewBubble.innerHTML = `${escapeHtml(state.message).replaceAll("\n", "<br>")}<span>${state.time} ✓✓</span>`;
+    }
+  };
+
+  channels.forEach((channel) => {
+    channel.addEventListener("click", () => setChannel(channel.dataset.unifiedChannel));
+    channel.addEventListener("keydown", (event) => {
+      if (!["ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const currentIndex = channels.indexOf(channel);
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % channels.length;
+      if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + channels.length) % channels.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = channels.length - 1;
+      channels[nextIndex].focus();
+      setChannel(channels[nextIndex].dataset.unifiedChannel);
+    });
+  });
+
+  setChannel(channels.find((channel) => channel.classList.contains("is-active"))?.dataset.unifiedChannel || "whatsapp");
 }
 
 function initIllustrationPreviews() {
